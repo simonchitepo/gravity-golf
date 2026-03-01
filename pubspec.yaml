@@ -1,0 +1,58 @@
+name: gravity_golf_flutter
+description: "Gravity Golf - Flutter port (Windows + Android)"
+publish_to: "none"
+version: 1.0.1+2
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  shared_preferences: ^2.2.3
+  audioplayers: ^5.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # App icons (Android + Windows)
+  flutter_launcher_icons: ^0.13.1
+
+  # MSIX packaging for Windows release / Store
+  msix: ^3.16.8
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/audio/
+    - assets/icon/
+
+flutter_launcher_icons:
+  android: true
+  image_path: "assets/icon/app_icon.png"
+  min_sdk_android: 21
+
+  windows:
+    generate: true
+    image_path: "assets/icon/app_icon.png"
+    icon_size: 256
+
+# Windows MSIX / Store identity config
+msix_config:
+  display_name: "Gravity golf"
+  publisher_display_name: "cyph3r"
+
+  # MUST match Partner Center EXACTLY:
+  identity_name: "cyph3r.Gravitygolf"
+  publisher: "CN=7456A62D-B4E5-49F3-9485-ADF80146DE6A"
+
+  # Store-friendly upload bundle
+  store: true
+
+  # a.b.c.d
+  msix_version: "1.0.1.0"
+
+  logo_path: "assets/icon/app_icon.png"
+
+  capabilities: "internetClient"
