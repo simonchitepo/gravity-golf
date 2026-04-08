@@ -60,7 +60,8 @@ This project showcases:
 ### 1. Motion Equations
 
 Ball movement is computed using discrete time integration:
-
+v = v₀ + a · dt
+x = x₀ + v · dt
 Where:
 - `v` = velocity vector  
 - `a` = acceleration (gravity)  
@@ -69,7 +70,7 @@ Where:
 ---
 
 ### 2. Gravity Simulation
-
+a = (0, g)
 - `g` is a constant acceleration (e.g. 9.8 or scaled for gameplay)
 
 ---
@@ -77,7 +78,7 @@ Where:
 ### 3. Velocity Damping (Friction)
 
 To simulate rolling resistance:
-
+v = v * (1 - μ)
 
 Where:
 - `μ` = friction coefficient (0 < μ < 1)
@@ -87,13 +88,13 @@ Where:
 ### 4. Collision Response (Reflection)
 
 When hitting a surface:
-
+v' = v - 2(v · n)n
 Where:
 - `n` = normalized surface normal  
 - `v'` = reflected velocity  
 
 Optional energy loss:
-
+v' = v' * e
 - `e` = restitution coefficient (0–1)
 
 ---
@@ -101,7 +102,9 @@ Optional energy loss:
 ### 5. Trajectory Prediction
 
 Future positions are simulated iteratively:
-
+for t in steps:
+v += a * dt
+x += v * dt
 This runs on a **cloned state**, ensuring no mutation of the real game.
 
 ---
