@@ -18,7 +18,7 @@ This project showcases:
 
 ## 🎮 Gameplay Preview
 
-> *(Add GIF or screenshots here)*
+![gameplay](image-1.png)
 
 ---
 
